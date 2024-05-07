@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next'
 import { Layout, Page } from '@vercel/examples-ui'
 import getProducts from '../../lib/getProducts'
-import { PER_PAGE } from '../category/[page]'
+import { PER_PAGE } from './[page]'
 import PaginationPage from '../../components/PaginatedPage'
 
 function Category({ products, totalProducts, currentPage }: any) {

@@ -20,12 +20,18 @@ const Pagination = ({
   const pages = usePagination(totalItems, currentPage, itemsPerPage)
 
   return (
-    <div className="flex items-center justify-center my-8">
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: '2rem',
+      marginBottom: '2rem',
+    }}>
       {pages.map((pageNumber, i) =>
         pageNumber === dotts ? (
           <span
             key={i}
-            className="px-4 py-2 rounded-full text-sm font-semibold text-black"
+            className="px-4 py-2 text-sm font-semibold text-black bg-black rounded-full"
           >
             {pageNumber}
           </span>

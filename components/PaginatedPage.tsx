@@ -1,5 +1,4 @@
-import React from 'react'
-import { Text } from '@vercel/examples-ui'
+import React from 'react' 
 import Pagination from './Pagination'
 
 type PageProps = {
@@ -10,14 +9,14 @@ type PageProps = {
 }
 
 const ProductCard = ({ name, description, price }: any) => (
-  <div className="my-10 border-2 border-sky-500 p-3">
-    <Text variant="h2">{name}</Text>
-    <Text variant="smallText" className="my-3">
+  <div className="p-3 my-10 border-2 border-sky-500">
+    <h2>{name}</h2>
+    <p className="my-3">
       ${price}
-    </Text>
-    <Text variant="body" className="my-8">
+    </p>
+    <div className="my-8">
       {description}
-    </Text>
+    </div>
   </div>
 )
 
@@ -29,14 +28,18 @@ const PaginationPage = ({
 }: PageProps): JSX.Element => {
   return (
     <div>
-      <Text variant="h1">Page {currentPage}</Text>
+      <h1>Page {currentPage}</h1>
       <Pagination
         totalItems={totalProducts}
         currentPage={currentPage}
         itemsPerPage={perPage}
-        renderPageLink={(page) => `/category/${page}`}
+        renderPageLink={(page) => `/Pagination/${page}`}
       />
-      <div className="grid grid-cols-3 gap-8">
+      <div style={{
+  display: 'grid',
+  gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+  gap: '2rem',
+}}>
         {products.map((product, i) => (
           <ProductCard key={i} {...product} />
         ))}

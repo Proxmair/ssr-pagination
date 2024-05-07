@@ -47,12 +47,10 @@ export const getStaticProps: GetStaticProps = async ({
       notFound: true,
     }
   }
-
-  // Redirect the first page to `/category` to avoid duplicated content
   if (page === 1) {
     return {
       redirect: {
-        destination: '/category',
+        destination: '/Pagination',
         permanent: false,
       },
     }
@@ -64,16 +62,13 @@ export const getStaticProps: GetStaticProps = async ({
       totalProducts: total,
       currentPage: page,
     },
-    revalidate: 60 * 60 * 24, // <--- ISR cache: once a day
+    revalidate: 60 * 60 * 24,
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    // Prerender the next 5 pages after the first page, which is handled by the index page.
-    // Other pages will be prerendered at runtime.
-    paths: Array.from({ length: 5 }).map((_, i) => `/category/${i + 2}`),
-    // Block the request for non-generated pages and cache them in the background
+    paths: Array.from({ length: 5 }).map((_, i) => `/Pagination/${i + 2}`),
     fallback: 'blocking',
   }
 }
